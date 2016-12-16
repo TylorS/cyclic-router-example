@@ -1,9 +1,7 @@
 import xs from 'xstream';
 import Cycle from '@cycle/xstream-run';
 import { makeDOMDriver, div, a } from '@cycle/dom';
-import { makeRouterDriver } from 'cyclic-router';
-import { createHistory } from 'history';
-import switchPath from 'switch-path'; // Required in v3, not required in v2 or below
+import { routerDriver } from './routerDriver';
 
 function HomeComponent(sources) {
   const router = sources.DOM.select('a').events('click')
@@ -42,11 +40,11 @@ function main(sources) {
 
   return {
     DOM: page$.map(c => c.DOM).flatten(),
-    router: page$.map(c => c.router).flatten().startWith('/')
+    router: page$.map(c => c.router).flatten()
   };
 }
 
 Cycle.run(main, {
   DOM: makeDOMDriver('#app'),
-  router: makeRouterDriver(createHistory(), switchPath)
+  router: routerDriver
 });

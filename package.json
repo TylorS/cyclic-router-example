@@ -12,8 +12,7 @@
   "dependencies": {
     "@cycle/dom": "^14.2.0",
     "@cycle/xstream-run": "^4.1.0",
-    "cyclic-router": "^3.0.1",
-    "history": "^3.2.1",
+    "prehistoric": "^1.1.0",
     "switch-path": "^1.2.0",
     "xstream": "^9.2.0"
   },
